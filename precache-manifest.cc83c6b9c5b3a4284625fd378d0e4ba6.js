@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "324d2807edacf351efe2dead734cf824",
+    "revision": "34f231d235401218f5c1d92b56beecb1",
     "url": "/DailyCurrency/index.html"
   },
   {
-    "revision": "c60a3a0e1a8c3941e219",
-    "url": "/DailyCurrency/static/css/main.14e41811.chunk.css"
+    "revision": "24040bd96186b971b7e2",
+    "url": "/DailyCurrency/static/css/main.3792f120.chunk.css"
   },
   {
     "revision": "cd84d894bb569f407b6e",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DailyCurrency/static/js/2.7d781e9e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c60a3a0e1a8c3941e219",
-    "url": "/DailyCurrency/static/js/main.d501b38a.chunk.js"
+    "revision": "24040bd96186b971b7e2",
+    "url": "/DailyCurrency/static/js/main.5d111da3.chunk.js"
   },
   {
     "revision": "85a6ce48ffd94a094d13",
