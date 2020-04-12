@@ -1,0 +1,72 @@
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import CurrencyInputRow from './CurrencyInputRow';
+
+const URL = 'https://api.exchangeratesapi.io/latest'
+function App() {
+  const [options, setCOptions] = useState([])
+  const [from, setFrom] = useState()
+  const [to, setTo] = useState()
+  const [rate, setRate] = useState()
+  const [amount, setAmount] = useState(1)
+  const [amountFrom, setAmountFrom] = useState(true)
+
+  let toAmount, fromAmount
+  if(amountFrom) {
+    fromAmount = amount
+    toAmount = amount * rate
+  }else {
+    toAmount = amount
+    fromAmount = amount / rate
+  }
+
+  useEffect(() => {
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => {
+        const first = Object.keys(data.rates)[5]
+        setCOptions([data.base, ...Object.keys(data.rates)])
+        setFrom(data.base)
+        setTo(first)
+        setRate(data.rates[first])
+      })
+  }, [])
+
+  useEffect(()=> {
+    if(from != null && to != null) {
+      fetch(`${URL}?base=${from}&symbols=${to}`)
+        .then(res => res.json())
+        .then(data => setRate(data.rates[to]))
+    }
+  }, [from, to])
+  function handleFromAmount(e) {
+    setAmount(e.target.value)
+    setAmountFrom(true)
+  }
+  function handleToAmount(e) {
+    setAmount(e.target.value)
+    setAmountFrom(false)
+  }
+  return (
+    <>
+      <h1>Money</h1> 
+      <CurrencyInputRow 
+        options = {options}
+        selectCurrency = {from}
+        onChangeCurrency = {e => setFrom(e.target.value)}
+        onChangeAmount = {handleFromAmount}
+        amount = {fromAmount}
+      />
+      <div>= </div>
+      <CurrencyInputRow 
+        options = {options}
+        selectCurrency = {to}
+        onChangeCurrency = {e => setTo(e.target.value)}
+        onChangeAmount = {handleToAmount}
+        amount = {toAmount}
+      />
+    </>
+  );
+}
+
+export default App;
