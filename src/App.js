@@ -48,8 +48,8 @@ function App() {
     setAmountFrom(false)
   }
   return (
-    <>
-      <h1>Money</h1> 
+    <div className="wrapper">
+      <h1>Daily Currency</h1> 
       <CurrencyInputRow 
         options = {options}
         selectCurrency = {from}
@@ -57,7 +57,7 @@ function App() {
         onChangeAmount = {handleFromAmount}
         amount = {fromAmount}
       />
-      <div>= </div>
+      <div className="equals">=</div>
       <CurrencyInputRow 
         options = {options}
         selectCurrency = {to}
@@ -65,7 +65,7 @@ function App() {
         onChangeAmount = {handleToAmount}
         amount = {toAmount}
       />
-    </>
+      </div>
   );
 }
 
