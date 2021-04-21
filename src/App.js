@@ -3,7 +3,7 @@ import CurrencyInputRow from "./CurrencyInputRow";
 import "./App.css";
 
 const APIKEY = process.env.API_KEY || "";
-const URL = `http://data.fixer.io/api/latest?access_key=${APIKEY}`;
+const URL = `http://api.exchangeratesapi.io/v1/latest?access_key=${APIKEY}`;
 
 function App() {
   const [options, setCOptions] = useState([]);
