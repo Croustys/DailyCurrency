@@ -3,8 +3,8 @@ import CurrencyInputRow from "./CurrencyInputRow";
 import axios from 'axios'
 import "./App.css";
 
-const APIKEY = process.env.REACT_APP_API_KEY || process.env.API_KEY || "pls work";
-console.log(APIKEY)
+// https://free.currencyconverterapi.com/
+const APIKEY = "a5f22d512768cd217187"; //gyerünk lopd el
 const URL = `https://free.currconv.com/api/v7/`;
 const URL_countries = `https://free.currconv.com/api/v7/currencies?apiKey=${APIKEY}`;
 
@@ -27,6 +27,7 @@ function App() {
 
   useEffect(() => {
     async function fetch() {
+      console.log(APIKEY)
       const {data : {results }} = await axios.get(URL_countries);
       setCOptions([...Object.keys(results)])
     }
