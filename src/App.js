@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import CurrencyInputRow from "./CurrencyInputRow";
+import axios from 'axios'
 import "./App.css";
 
 const APIKEY = process.env.API_KEY || "";
-const URL = `http://api.exchangeratesapi.io/v1/latest?access_key=${APIKEY}`;
+const URL = `https://free.currconv.com/api/v7/`;
+const URL_countries = `https://free.currconv.com/api/v7/currencies?apiKey=${APIKEY}`;
 
 function App() {
   const [options, setCOptions] = useState([]);
-  const [from, setFrom] = useState();
-  const [to, setTo] = useState();
+  const [from, setFrom] = useState("EUR");
+  const [to, setTo] = useState("HUF");
   const [rate, setRate] = useState();
   const [amount, setAmount] = useState(1);
   const [amountFrom, setAmountFrom] = useState(true);
@@ -23,24 +25,23 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        const first = Object.keys(data.rates)[62];
-        setCOptions([data.base, ...Object.keys(data.rates)]);
-        setFrom(data.base);
-        setTo(first);
-        setRate(data.rates[first]);
-      });
-  }, []);
+    async function fetch() {
+      const {data : {results }} = await axios.get(URL_countries);
+      setCOptions([...Object.keys(results)])
+    }
+    fetch();
+  }, []); 
 
   useEffect(() => {
-    if (from != null && to != null) {
-      fetch(`${URL}&from=${from}&to=${to}`)
-        .then((res) => res.json())
-        .then((data) => setRate(data.rates[to]));
+    async function fetch() {
+      if (from != null && to != null) {
+        const {data} = await axios.get(`${URL}convert?q=${from}_${to},${to}_${from}&compact=ultra&apiKey=${APIKEY}`)
+        const [valTo, valFrom] = Object.values(data);
+        setRate(valTo)
+      }
     }
-  }, [from, to]);
+    fetch();
+  }, [from, to]); 
   function handleFromAmount(e) {
     setAmount(e.target.value);
     setAmountFrom(true);
