@@ -27,7 +27,6 @@ function App() {
 
   useEffect(() => {
     async function fetch() {
-      console.log(APIKEY)
       const {data : {results }} = await axios.get(URL_countries);
       setCOptions([...Object.keys(results)])
     }
