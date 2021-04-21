@@ -172,7 +172,7 @@ window.env = {
   "npm_package_dependencies__testing_library_user_event": "^7.2.1",
   "npm_package_description": "Cool React project : )",
   "npm_package_eslintConfig_extends": "react-app",
-  "npm_package_gitHead": "206aeb7446fc558f2f332a16a9e81c928845f990",
+  "npm_package_gitHead": "821e37a207383101db9760ae147705ebb544fed1",
   "npm_package_homepage": "https://croustys.github.io/DailyCurrency/",
   "npm_package_name": "currency",
   "npm_package_private": "true",
