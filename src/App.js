@@ -3,7 +3,8 @@ import CurrencyInputRow from "./CurrencyInputRow";
 import axios from 'axios'
 import "./App.css";
 
-const APIKEY = process.env.API_KEY || "";
+const APIKEY = process.env.REACT_APP_API_KEY || process.env.API_KEY || "pls work";
+console.log(APIKEY)
 const URL = `https://free.currconv.com/api/v7/`;
 const URL_countries = `https://free.currconv.com/api/v7/currencies?apiKey=${APIKEY}`;
 
