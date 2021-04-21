@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrencyInputRow from "./CurrencyInputRow";
 import "./App.css";
 
-const URL = `http://api.exchangeratesapi.io/v1/latest?access_key=${process.env.API_KEY}`;
+const URL = `https://api.exchangeratesapi.io/v1/latest?access_key=${process.env.API_KEY}`;
 
 function App() {
   const [options, setCOptions] = useState([]);
@@ -22,7 +22,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(`${URL}`)
+    fetch({URL})
       .then((res) => res.json())
       .then((data) => {
         const first = Object.keys(data.rates)[62];
