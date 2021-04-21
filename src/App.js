@@ -22,7 +22,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch({URL})
+    fetch(URL)
       .then((res) => res.json())
       .then((data) => {
         const first = Object.keys(data.rates)[62];
