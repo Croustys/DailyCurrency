@@ -1,5 +1,6 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
+  "API_KEY": "a5c9ef28ee135fe56409641274795e4a",
   "APPDATA": "C:\\Users\\akosb\\AppData\\Roaming",
   "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_3752_PUBNXXCMTWYBRSXR",
   "COLORTERM": "truecolor",
