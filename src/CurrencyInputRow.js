@@ -8,10 +8,6 @@ export default function CurrencyInputRow({
   onChangeAmount,
   amount,
 }) {
-  const formatter = new Intl.NumberFormat("hu-HU", {
-    style: "currency",
-    currency: "HUF",
-  });
   return (
     <div>
       <input

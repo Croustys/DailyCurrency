@@ -41,7 +41,7 @@ function App() {
         const { data } = await axios.get(
           `${URL}convert?q=${from}_${to},${to}_${from}&compact=ultra&apiKey=${APIKEY}`
         );
-        const [valTo, valFrom] = Object.values(data);
+        const [valTo] = Object.values(data);
         setRate(valTo);
       }
     }
@@ -72,7 +72,7 @@ function App() {
         selectCurrency={to}
         onChangeCurrency={(e) => setTo(e.target.value)}
         onChangeAmount={handleToAmount}
-        amount={toAmount.toFixed(2)}
+        amount={toAmount}
       />
     </div>
   );
