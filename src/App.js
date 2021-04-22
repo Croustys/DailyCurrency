@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CurrencyInputRow from "./CurrencyInputRow";
-import axios from 'axios'
+import axios from "axios";
 import "./App.css";
 
 // https://free.currencyconverterapi.com/
@@ -27,22 +27,26 @@ function App() {
 
   useEffect(() => {
     async function fetch() {
-      const {data : {results }} = await axios.get(URL_countries);
-      setCOptions([...Object.keys(results)])
+      const {
+        data: { results },
+      } = await axios.get(URL_countries);
+      setCOptions([...Object.keys(results)]);
     }
     fetch();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     async function fetch() {
       if (from != null && to != null) {
-        const {data} = await axios.get(`${URL}convert?q=${from}_${to},${to}_${from}&compact=ultra&apiKey=${APIKEY}`)
+        const { data } = await axios.get(
+          `${URL}convert?q=${from}_${to},${to}_${from}&compact=ultra&apiKey=${APIKEY}`
+        );
         const [valTo, valFrom] = Object.values(data);
-        setRate(valTo)
+        setRate(valTo);
       }
     }
     fetch();
-  }, [from, to]); 
+  }, [from, to]);
   function handleFromAmount(e) {
     setAmount(e.target.value);
     setAmountFrom(true);
@@ -51,6 +55,7 @@ function App() {
     setAmount(e.target.value);
     setAmountFrom(false);
   }
+
   return (
     <div className="wrapper">
       <h1>Daily Currency</h1>
@@ -67,7 +72,7 @@ function App() {
         selectCurrency={to}
         onChangeCurrency={(e) => setTo(e.target.value)}
         onChangeAmount={handleToAmount}
-        amount={toAmount}
+        amount={toAmount.toFixed(2)}
       />
     </div>
   );
