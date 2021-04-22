@@ -64,7 +64,7 @@ function App() {
         selectCurrency={from}
         onChangeCurrency={(e) => setFrom(e.target.value)}
         onChangeAmount={handleFromAmount}
-        amount={fromAmount}
+        amount={!amountFrom ? fromAmount.toFixed(2) : fromAmount}
       />
       <div className="equals">=</div>
       <CurrencyInputRow
@@ -72,7 +72,7 @@ function App() {
         selectCurrency={to}
         onChangeCurrency={(e) => setTo(e.target.value)}
         onChangeAmount={handleToAmount}
-        amount={toAmount}
+        amount={amountFrom ? toAmount.toFixed(2) : toAmount}
       />
     </div>
   );
