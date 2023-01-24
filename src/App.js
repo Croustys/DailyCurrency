@@ -3,7 +3,7 @@ import CurrencyInputRow from "./CurrencyInputRow";
 import axios from "axios";
 import "./App.css";
 
-const APIKEY = "9ea9437742a676fe1503";
+const APIKEY = "7966af3e6f18f393d597";
 const URL = `https://free.currconv.com/api/v7/`;
 const URL_countries = `https://free.currconv.com/api/v7/currencies?apiKey=${APIKEY}`;
 
