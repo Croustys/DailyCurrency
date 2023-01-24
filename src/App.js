@@ -4,7 +4,7 @@ import axios from "axios";
 import "./App.css";
 
 // https://free.currencyconverterapi.com/
-const APIKEY = "a5f22d512768cd217187"; //gyerünk lopd el
+const APIKEY = "7966af3e6f18f393d597";
 const URL = `https://free.currconv.com/api/v7/`;
 const URL_countries = `https://free.currconv.com/api/v7/currencies?apiKey=${APIKEY}`;
 
